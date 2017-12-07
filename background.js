@@ -2,7 +2,6 @@
 chrome.alarms.create("refreshNow", {"periodInMinutes": 15.0});
 
 let lastAction = Date.now();
-let count = 0;
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     let url = changeInfo.url ? changeInfo.url : tab.url;
