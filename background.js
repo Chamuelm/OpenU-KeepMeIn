@@ -27,12 +27,10 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 
           // Refreshing only if the last interaction with openu website was
           // at least 10 minutes ago and there's a tab to refresh
-          if((lastAction + 600000) <= Date.now()) {
-              if(chosenTab) {
+          if(chosenTab && (lastAction + 600000) <= Date.now()) {
                   chrome.tabs.reload(chosenTab.id);
-              } else { // If there isn't a sheilta tab active
-                 window.location.reload()
-              }
+          } else if(tabs && tabs.length > 0) { // If there isn't a sheilta tab active but there's an openu one
+              window.location.reload()
           }
       })
   }
