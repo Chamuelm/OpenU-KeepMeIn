@@ -6,7 +6,7 @@ Keep in mind that the extension will only extend your login session (if you're a
 ## Installation
 ![Google Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_128x128.png)
 
-You can download this extension in the [Google web Store](https://chrome.google.com/webstore/detail/openu-keepmein/ipkgoinoikifjconfmmnmhbcedhbfcgp)
+You can download this extension in the [Google Web Store](https://chrome.google.com/webstore/detail/openu-keepmein/ipkgoinoikifjconfmmnmhbcedhbfcgp)
 
 Alternatively, you can clone this repository, open Chrome and go to `chrome:\\extensions`, check the Developer Options box and choose `Load unpacked extension` - use the cloned directory.
 
