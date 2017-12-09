@@ -3,7 +3,7 @@
 
   "name": "OpenU-KeepMeIn",
   "description": "Simple Chrome extension which refreshes your *.openu.ac.il tabs so you'll stay logged in.",
-  "version": "1.4",
+  "version": "1.4.3",
   "icons": { "16": "refresh16.png",
     "48": "refresh48.png",
     "128": "refresh128.png" },
