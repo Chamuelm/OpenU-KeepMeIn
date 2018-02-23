@@ -43,12 +43,6 @@ function mainPage() {
   <a class="niceButton" href="kolhapniot.newsearch">כל הבקשות</a>
   </div>`)
   document.getElementById('selectAllRequests').addEventListener('click', selectAllRequests);
-
-  // Calender
-  axios.get("https://sheilta.apps.openu.ac.il/pls/dmyopt2/luach_shana.first").then(function(data) {
-    var parser = new DOMParser()
-    var el = parser.parseFromString(data.data, "text/html");
-  });
 }
 
 

@@ -1,4 +1,4 @@
-chrome.alarms.create("refreshNow", {"periodInMinutes": 20.0});
+chrome.alarms.create("refreshNow", {"periodInMinutes": 15.0});
 
 chrome.alarms.onAlarm.addListener((alarm) => {
   if(alarm.name === "refreshNow" && navigator.onLine) {
