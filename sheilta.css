@@ -1,0 +1,29 @@
+.niceButton {
+  outline:none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius:40px;
+  background: #fff;
+  border: 2px solid #26499e;
+  color:#26499e;
+  letter-spacing:1px;
+  text-shadow:0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 3px;
+  text-decoration: none;
+}
+
+
+.niceButton:hover {
+  color:white;
+  background: #26499e;
+}
+
+.message_actions {
+  float: left;
+  margin-top: 5px;
+}
