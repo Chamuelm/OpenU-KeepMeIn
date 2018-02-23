@@ -15,7 +15,7 @@
     {
       "matches": ["https://sheilta.apps.openu.ac.il/*"],
       "css": ["sheilta.css"],
-      "js": ["jquery.js","sheilta.js"]
+      "js": ["axios.js","jquery.js","sheilta.js"]
     }
   ],
   "permissions": [
