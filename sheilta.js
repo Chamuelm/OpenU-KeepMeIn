@@ -90,7 +90,7 @@ function mainPage() {
 
 
     let table = document.createElement( 'tr' );
-    tmp.innerHTML = `<td align="right" style="padding-right: 0px;">
+    table.innerHTML = `<td align="right" style="padding-right: 0px;">
       <div style="float:right" class="blue_title">מועדי המפגשים בקורסים שלי</div><br/><br/>
         ${classes.innerHTML}
       </td></tr>
