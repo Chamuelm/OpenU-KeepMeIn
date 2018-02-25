@@ -6,6 +6,7 @@ const selectors = {
   mainPage_messages_actions: '#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(1) > td > div:nth-child(2)',
   mainPage_grades_header: '#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(1)',
   mainPage_requests_actions: '#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(6) > td > table:nth-child(2) > tbody > tr:nth-child(1) > td > div:nth-child(2)',
+  mainPage_requests_actions_fallback: '#right_col > div:nth-child(3) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div:nth-child(2)',
   s360_avg_grade: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(2) > div.row.space-bottom > div:nth-child(3) > p',
   s360_classes: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(4)',
   mainPage_sideCard: '#left_col > div:nth-child(1)',
@@ -37,41 +38,54 @@ function mainPage() {
   window.top.document.querySelector('head').append(css.head.firstChild);
 
   // Messages
-  const msgButtons = parser.parseFromString(`<div class="message_actions">
-  <a class="niceButton" id="selectAllMessages">בטל סימון להכל</a>
-  <a class="niceButton" href="javascript:submit_all('chadash')">עדכון תצוגה</a>
-  <a class="niceButton" href="KOLHAODAOT.showhod">ארכיון הודעות</a>
-  <a class="niceButton" href="sms.sms_screen">הגדרות משלוח הודעות</a>
-  </div>`, "text/html");
-  window.top.document.querySelector(selectors.mainPage_messages_actions).replaceWith(msgButtons.body.firstChild)
-  realDoc.getElementById('selectAllMessages').addEventListener('click', selectAllMessages);
+  try {
+    const msgButtons = parser.parseFromString(`<div class="message_actions">
+    <a class="niceButton" id="selectAllMessages">בטל סימון להכל</a>
+    <a class="niceButton" href="javascript:submit_all('chadash')">עדכון תצוגה</a>
+    <a class="niceButton" href="KOLHAODAOT.showhod">ארכיון הודעות</a>
+    <a class="niceButton" href="sms.sms_screen">הגדרות משלוח הודעות</a>
+    </div>`, "text/html");
+    window.top.document.querySelector(selectors.mainPage_messages_actions).replaceWith(msgButtons.body.firstChild)
+    realDoc.getElementById('selectAllMessages').addEventListener('click', selectAllMessages);
+  } catch(err) {
+    console.err(err);
+  }
 
 
   // Grades
-  if(window.top.document.querySelector(selectors.mainPage_grades_header)) {
-    window.top.document.querySelector(selectors.mainPage_grades_header).setAttribute('colspan', 5);
-    const grdButton = parser.parseFromString(`<td colspan="2" style="border: 0px;" nowrap="" bgcolor="#ffffff" align="left">
-    <div class="message_actions">
-    <a class="niceButton" id="selectAllGrades">בטל סימון להכל</a>
-    </div>
-    </td>`, "text/html");
-    window.top.document.querySelector(selectors.mainPage_grades_header).after(grdButton.body.firstChild);
-  
-    realDoc.getElementById('selectAllGrades').addEventListener('click', selectAllGrades);
+  try {
+    if(window.top.document.querySelector(selectors.mainPage_grades_header)) {
+      window.top.document.querySelector(selectors.mainPage_grades_header).setAttribute('colspan', 5);
+      const grdButton = parser.parseFromString(`<td colspan="2" style="border: 0px;" nowrap="" bgcolor="#ffffff" align="left">
+      <div class="message_actions">
+      <a class="niceButton" id="selectAllGrades">בטל סימון להכל</a>
+      </div>
+      </td>`, "text/html");
+      window.top.document.querySelector(selectors.mainPage_grades_header).after(grdButton.body.firstChild);
+    
+      realDoc.getElementById('selectAllGrades').addEventListener('click', selectAllGrades);
+    }
+  } catch(err) {
+    console.err(err);
   }
 
   // Requests
-  const reqButton = parser.parseFromString(`<div class="message_actions">
-  <a class="niceButton" id="selectAllRequests">בטל סימון להכל</a>
-  <a class="niceButton" href="pniot.tree">בקשה חדשה</a>
-  <a class="niceButton" href="javascript:submit_all('pniya')">עדכון תצוגה</a>
-  <a class="niceButton" href="kolhapniot.newsearch">כל הבקשות</a>
-  </div>`, "text/html");
-  window.top.document.querySelector(selectors.mainPage_requests_actions).replaceWith(reqButton.body.firstChild)
-  realDoc.getElementById('selectAllRequests').addEventListener('click', selectAllRequests);
+  try {
+    const reqButton = parser.parseFromString(`<div class="message_actions">
+    <a class="niceButton" id="selectAllRequests">בטל סימון להכל</a>
+    <a class="niceButton" href="pniot.tree">בקשה חדשה</a>
+    <a class="niceButton" href="javascript:submit_all('pniya')">עדכון תצוגה</a>
+    <a class="niceButton" href="kolhapniot.newsearch">כל הבקשות</a>
+    </div>`, "text/html");
+    const requests =   window.top.document.querySelector(selectors.mainPage_requests_actions) || window.top.document.querySelector(selectors.mainPage_requests_actions_fallback)
+    requests.replaceWith(reqButton.body.firstChild)
+    realDoc.getElementById('selectAllRequests').addEventListener('click', selectAllRequests);
+  } catch(err) {
+    console.err(err);
+  }
 
-  // Classes
   axios.get('https://sheilta.apps.openu.ac.il/student360').then((response) => {
+    try {
       const el = parser.parseFromString(response.data, "text/html");
       const grade = el.querySelector(selectors.s360_avg_grade).innerHTML;
       const points = el.querySelector(selectors.s360_points).innerHTML;
@@ -98,6 +112,9 @@ function mainPage() {
 
       window.top.document.querySelector(selectors.mainPage_sideCard).after(quick.body.firstChild)
       window.top.document.querySelector(selectors.mainPage_newTable).after(table)
+    } catch(err) {
+      console.err(err);
+    }
   })
 }
 
@@ -107,9 +124,17 @@ function selectAllMessages() {
 }
 
 function selectAllRequests() {
-  window.top.document.forms.form1.check_array_pn.forEach(el => el.checked = !el.checked);
+  if(window.top.document.forms.form1.check_array_pn.length) {
+    window.top.document.forms.form1.check_array_pn.forEach(el => el.checked = !el.checked);
+  } else {
+    window.top.document.forms.form1.check_array_pn.checked = !window.top.document.forms.form1.check_array_pn.checked;
+  }
 }
 
 function selectAllGrades() {
-  window.top.document.forms.form1.check_array_matala.forEach(el => el.checked = !el.checked);
+  if(window.top.document.forms.form1.check_array_matala.length) {
+    window.top.document.forms.form1.check_array_matala.forEach(el => el.checked = !el.checked);
+  } else {
+    window.top.document.forms.form1.check_array_matala.checked = !window.top.document.forms.form1.check_array_matala.checked;
+  }
 }
