@@ -48,7 +48,7 @@ function mainPage() {
     window.top.document.querySelector(selectors.mainPage_messages_actions).replaceWith(msgButtons.body.firstChild)
     realDoc.getElementById('selectAllMessages').addEventListener('click', selectAllMessages);
   } catch(err) {
-    console.err(err);
+    console.warn(err);
   }
 
 
@@ -66,7 +66,7 @@ function mainPage() {
       realDoc.getElementById('selectAllGrades').addEventListener('click', selectAllGrades);
     }
   } catch(err) {
-    console.err(err);
+    console.warn(err);
   }
 
   // Requests
@@ -81,7 +81,7 @@ function mainPage() {
     requests.replaceWith(reqButton.body.firstChild)
     realDoc.getElementById('selectAllRequests').addEventListener('click', selectAllRequests);
   } catch(err) {
-    console.err(err);
+    console.warn(err);
   }
 
   axios.get('https://sheilta.apps.openu.ac.il/student360').then((response) => {
@@ -113,7 +113,7 @@ function mainPage() {
       window.top.document.querySelector(selectors.mainPage_sideCard).after(quick.body.firstChild)
       window.top.document.querySelector(selectors.mainPage_newTable).after(table)
     } catch(err) {
-      console.err(err);
+      console.warn(err);
     }
   })
 }
