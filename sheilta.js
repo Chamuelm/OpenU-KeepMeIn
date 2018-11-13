@@ -3,14 +3,17 @@ const parser = new DOMParser();
 
 const selectors = {
   mainPage__messages: '#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > table > tbody > tr:nth-child(3)',
-  mainPage_messages_actions: '#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(1) > td > div:nth-child(2)',
+  mainPage_messages_actions: '#right_col > div:nth-child(4) > table > tbody > tr > td > form > table > tbody > tr:nth-child(1) > td > div:nth-child(2)',
+  //'#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(1) > td > div:nth-child(2)',
   mainPage_grades_header: '#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(1)',
-  mainPage_requests_actions: '#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(6) > td > table:nth-child(2) > tbody > tr:nth-child(1) > td > div:nth-child(2)',
+  mainPage_requests_actions: '#right_col > div:nth-child(4) > table > tbody > tr > td > form > table > tbody > tr:nth-child(6) > td > table:nth-child(2) > tbody > tr:nth-child(1) > td > div:nth-child(2)',
+  //'#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(6) > td > table:nth-child(2) > tbody > tr:nth-child(1) > td > div:nth-child(2)',
   mainPage_requests_actions_fallback: '#right_col > div:nth-child(3) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div:nth-child(2)',
   s360_avg_grade: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(2) > div.row.space-bottom > div:nth-child(3) > p',
   s360_classes: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(4)',
   mainPage_sideCard: '#left_col > div:nth-child(1)',
-  mainPage_newTable: '#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(5)',
+  mainPage_newTable: '#right_col > div:nth-child(4) > table > tbody > tr > td > form',
+  //'#right_col > div:nth-child(3) > table > tbody > tr > td > form > table > tbody > tr:nth-child(5)',
   s360_points: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(2) > div.row.space-bottom > div:nth-child(2) > p:nth-child(3)',
   s360_pending_points: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(2) > div.row.space-bottom > div:nth-child(2) > p:nth-child(4)',
   s360_number_of_couses: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.light-green-info > div > div:nth-child(2) > div.row > div:nth-child(1) > div > div:nth-child(2) > p > span'
