@@ -37,3 +37,9 @@
 .fa-calendar {
   color: #337ab7;
 }
+
+.next-meeting {
+  background-image: url(https://sheilta.apps.openu.ac.il/student360/images/calendar.png);
+  background-repeat: no-repeat;
+  background-position: top center;
+}
