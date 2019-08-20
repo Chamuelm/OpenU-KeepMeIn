@@ -9,11 +9,11 @@ const selectors = {
   s360_avg_grade: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(2) > div.row.space-bottom > div:nth-child(3) > p',
   s360_classes: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(4)',
   mainPage_sideCard: '#left_col > div:nth-child(1)',
-  // mainPage_newTable: '#right_col > div:nth-child(4) > table > tbody > tr > td > form',
   mainPage_newTable: '#right_col > div:nth-child(4) > table > tbody > tr:nth-child(2)',
   s360_points: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(2) > div.row.space-bottom > div:nth-child(2) > p:nth-child(3)',
   s360_pending_points: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(2) > div.row.space-bottom > div:nth-child(2) > p:nth-child(4)',
-  s360_number_of_couses: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.light-green-info > div > div:nth-child(2) > div.row > div:nth-child(1) > div > div:nth-child(2) > p > span'
+  s360_number_of_couses: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.light-green-info > div > div:nth-child(2) > div.row > div:nth-child(1) > div > div:nth-child(2) > p > span',
+  s360_courses_timetable: '#body > section > div > div > div.col-md-10.col-md-offset-1.main-wrapper > div.row.info.green-info > div > div:nth-child(4) > div > div:nth-child(1) > table'
 }
 
 document.onreadystatechange = function () {
@@ -97,6 +97,7 @@ function mainPage() {
       const points = el.querySelector(selectors.s360_points).innerHTML;
       const s360_pending_points = el.querySelector(selectors.s360_pending_points).innerHTML;
       const classes = el.querySelector(selectors.s360_classes);
+      const classes_timeTables = el.querySelector(selectors.s360_courses_timetable);
       const quick = parser.parseFromString(`<div class="inner">
       <div class="left">
         <h3 class="title1"> פריטים מהירים </h3>
@@ -108,7 +109,7 @@ function mainPage() {
       </div>
     </div>`, "text/html");
 
-
+    
     let table = document.createElement( 'tr' );
     table.innerHTML = `<td align="right" style="padding-right: 0px;">
       <div style="float:right" class="blue_title">מועדי המפגשים בקורסים שלי</div><br/><br/>
@@ -117,7 +118,7 @@ function mainPage() {
       <tr><td></td></tr><tr><td></td></tr><tr align="right"><td></td>`;
 
       window.top.document.querySelector(selectors.mainPage_sideCard).after(quick.body.firstChild)
-      window.top.document.querySelector(selectors.mainPage_newTable).after(table)
+      // window.top.document.querySelector(selectors.mainPage_newTable).after(table)
     } catch(err) {
       console.warn(err);
     }
